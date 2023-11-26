@@ -5,18 +5,18 @@ This decentralized voting system is built using Ethereum smart contracts and Dis
 ## Getting Started
 This project consists of two main components:
 
-### Ethereum Smart Contracts - Written in Solidity, these contracts manage the voting process and candidate information on the Ethereum blockchain.
+#### Ethereum Smart Contracts - Written in Solidity, these contracts manage the voting process and candidate information on the Ethereum blockchain.
 
-### Discord Bot - A Discord bot that listens to events on the Ethereum blockchain and sends notifications to a specified Discord channel when votes are cast.Message '!candidates'  to get current poll
+#### Discord Bot - A Discord bot that listens to events on the Ethereum blockchain and sends notifications to a specified Discord channel when votes are cast.Message '!candidates'  to get current poll
     
 
 ## Prerequisites
 Before you begin, make sure you have the following:
 
-### Node.js and npm installed
-### Truffle/remix ide for Ethereum contract development
-### Discord bot token
-### Infura or other Ethereum node API key
+#### Node.js and npm installed
+#### Truffle/remix ide for Ethereum contract development
+#### Discord bot token
+#### Infura or other Ethereum node API key
 
 ## Installation
 Clone the repository:
@@ -79,10 +79,12 @@ This will deploy the smart contracts to the Ethereum blockchain.
 !candidates: Get information about all candidates and their vote counts.
 The bot will always send notification when a wallet cast vote 
 
-Pull requests and suggestions are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
 
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Acknowledgments
 Inspiration: Decentralized Voting System
+
+Pull requests and suggestions are welcome. For major changes, please open an issue first to discuss what you would like to change.

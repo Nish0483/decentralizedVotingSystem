@@ -7,16 +7,17 @@ This project consists of two main components:
 
 #### Ethereum Smart Contracts - Written in Solidity, these contracts manage the voting process and candidate information on the Ethereum blockchain.
 
-#### Discord Bot - A Discord bot that listens to events on the Ethereum blockchain and sends notifications to a specified Discord channel when votes are cast.Message '!candidates'  to get current poll
+#### Discord Bot - A Discord bot that listens to events on the Ethereum blockchain and sends notifications to a specified Discord channel when votes are cast.
+* Message '!candidates'  to get current poll
     
 
 ## Prerequisites
 Before you begin, make sure you have the following:
 
-#### Node.js and npm installed
-#### Truffle/remix ide for Ethereum contract development
-#### Discord bot token
-#### Infura or other Ethereum node API key
+* Node.js and npm installed
+* Truffle/remix ide for Ethereum contract development
+* Discord bot token
+* Infura or other Ethereum node API key
 
 ## Installation
 Clone the repository:
@@ -29,10 +30,14 @@ Install dependencies:
 ~~~
 npm install
 ~~~
+
+
 ## Configure the Ethereum and Discord settings:
 
 Update the contract address, ABI, and Ethereum node/API settings in vote.js.
 Replace the Discord bot token and channel ID in vote.js.
+
+
 
 # Usage
 
@@ -72,9 +77,10 @@ node discordBot.js
 This will start the Discord bot, and it will listen for vote events on the Ethereum blockchain.
 
 ### Deploying Smart Contracts
-bash
-Copy code
+~~~
+truffle compile
 truffle migrate
+~~~
 This will deploy the smart contracts to the Ethereum blockchain.
 
 ## Discord Commands

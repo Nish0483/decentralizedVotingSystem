@@ -52,6 +52,7 @@ to run server in local server
 
 ## Notes
 
+*keep in mind voting is for 24 hours ( to do a reset current vote should over )
 
 * keep enough gas to operate . keep metamask installed.
 

@@ -11,9 +11,8 @@ const VotingApp = () => {
   const [account, setAccount] = useState(null);
   const [candidates, setCandidates] = useState([]);
   const [selectedCandidate, setSelectedCandidate] = useState(-1);
-
   const [votingStatus, setVotingStatus] = useState('');
-  const contractAddress = '0x482775016826F581E4805aC9d54e6DF1619dD5fb';
+  const contractAddress = '0x85f2575cA34C7Bc8955BA05835a866Dc120f8715';
   const [errorMessage, setErrorMessage] = useState('');
   const [metamask, setMetamask] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
@@ -48,12 +47,13 @@ const VotingApp = () => {
   
   
 
-  useEffect(() => {
+useEffect(() => {
     fetchData();
     
   }, [contract],[metamask]);
 
-useEffect(() => {
+
+useEffect(() => {    //clear messages after a while
   if (errorMessage||successMessage) {
     setTimeout(() => {
       setErrorMessage('');
@@ -62,7 +62,8 @@ useEffect(() => {
   }
 })
   
-  const handleVote = async () => {
+
+const handleVote = async () => {                 //voting call
     if (!contract || isNaN(selectedCandidate) || selectedCandidate === 0) {
       console.error('Invalid Candidate selected:', selectedCandidate);
       setErrorMessage('Please select a valid candidate');
@@ -71,20 +72,17 @@ useEffect(() => {
 
     try {
       console.log('Selected Candidate no CN:', selectedCandidate);
-      // Send a transaction to vote
       const tx = await contract.vote(selectedCandidate);
       await tx.wait();
 
-      // Clear any previous error message
+      
       setErrorMessage('');
       setSuccessMessage('Voted successfully');
 
       // Refresh the candidate data
       fetchData();
     } catch (error) {
-      console.error('Error voting:', error.message);
-
-      // Check for specific error conditions and set appropriate error messages
+      console.error('Error voting:', error.message); 
       if (error.message.includes('You have already voted')) {
         setErrorMessage('You have already voted');
       
@@ -92,7 +90,6 @@ useEffect(() => {
         setErrorMessage('Admin can not vote');
       
       } else {
-        // If none of the specific conditions match, set a generic error message
         setErrorMessage('Please select a valid candidate');
       }
     }
@@ -100,16 +97,16 @@ useEffect(() => {
   
   
 
-  const handleAddCandidate = async () => {
+  const handleAddCandidate = async () => {     //add candidate
     if (!contract || !newCandidateName) return;
 
     try {
-      // Implement the add candidate functionality
-      // Call the corresponding contract function with the new candidate name
-      await contract.addCandidate(newCandidateName);
-      // Clear the input field
+      
+      tx = await contract.addCandidate(newCandidateName);
+      await tx.wait();
+      
       setNewCandidateName('');
-      // Refresh data afterward
+     
       fetchData();
       setSuccessMessage('Candidate added successfully');
     } catch (error) {
@@ -121,42 +118,38 @@ useEffect(() => {
       }else if (error.message.includes('only admin')) {
         setErrorMessage('Only admin can add candidate');  
       } else {
-        // If none of the specific conditions match, set a generic error message
+        
         setErrorMessage(`Error adding candidate: ${error.message}`);
       }}
   };
 
-  const handleOpenVoting = async () => {
+  const handleOpenVoting = async () => {   //open voting
     if (!contract) return;
-
+  
     try {
-      // Implement the open voting functionality
-      // Call the corresponding contract function
-      await contract.openVoting();
-      // Refresh data afterward
+      tx = await contract.openVoting();
+      await tx.wait();
       fetchData();
       setSuccessMessage('Voting opened successfully');
     } catch (error) {
       console.error('Error opening voting:', error.message);
-      if (error.message.includes('only admin')) {
+      if (error.message.includes('Only admin can perform')) {
         setErrorMessage('Only admin can open voting');
-      }else if (error.message.includes('Voting is already open')) {
+      } else if (error.message.includes('Voting is already open')) {
         setErrorMessage('Voting is already open');
-      } else if(error.message.includes('Minimum 2 candidates')) {
-        
+      } else if (error.message.includes('Minimum 2 candidates are required')) {
         setErrorMessage('Minimum 2 candidates needed to open voting');
       }
     }
   };
+  
 
-  const handleReset = async () => {
+  const handleReset = async () => {    //reset call
     if (!contract) return;
 
     try {
-      // Implement the reset functionality
-      // Call the corresponding contract function
-      await contract.RESET();
-      // Refresh data afterward
+      const tx=await contract.RESET();
+      await tx.wait();
       fetchData();
       setSuccessMessage('Voting reset successfully');
     } catch (error) {
@@ -165,19 +158,17 @@ useEffect(() => {
         setErrorMessage('Only admin can reset');
       }else if (error.message.includes('Voting is still')) {
         setErrorMessage('Voting still running- cannot reset untill 24 hours');
-      }
-    }
+      }else if (error.message.includes('Only admin can perform')) {
+        setErrorMessage('Only admin can Reset voting system:only after completion of current voting');
+    }}
   };
 
   const handleBecomeAdmin = async () => {
     if (!contract) return;
 
     try {
-      // Implement the become admin functionality
-      // Call the corresponding contract function
       const tx=await contract.becomeAdminTestOnly();
       await tx.wait();
-      // Refresh data afterward
       fetchData();
       setSuccessMessage('You are now admin');
     } catch (error) {
@@ -193,7 +184,7 @@ useEffect(() => {
   const fetchData = async () => {
     if (contract) {
       try {
-        // Fetch current voting stage
+        // Fetch the current voting status
         const stage = await contract.currentStage();
         setVotingStatus(stage);
   
@@ -258,8 +249,7 @@ useEffect(() => {
 
   
   
-
-  return (
+return (
 
 <div className="App">
 <div id='meta'>
@@ -276,7 +266,7 @@ useEffect(() => {
       </div>
       </div>
 
-      {/* Display error message style={{ color: 'red' }}*/}
+      {/* Display error and success messages if any}*/}
      {errorMessage && <p id='error' >{errorMessage}</p>}
      {successMessage && <p id='success' >{successMessage}</p>}
 
@@ -324,7 +314,7 @@ useEffect(() => {
             </Button>
           </Form>
           <br></br>
-          <h3>Candidate Results</h3>
+          <h3>Voting Results</h3>
         
           {renderCandidatesTable()}
 
@@ -335,7 +325,7 @@ useEffect(() => {
             <Button variant="info" onClick={handleOpenVoting} disabled={votingStatus !== 'Candidate selection is ongoing'}>
               Open Voting
             </Button>
-            <Button variant="warning" onClick={handleReset} disabled={votingStatus !== 'Voting is over'}>
+            <Button variant="warning" onClick={handleReset} disabled={votingStatus !== 'Voting is over'}>  {/*disabled={votingStatus !== 'Voting is over'}*/}
               Reset
             </Button>
             <Button variant="danger" onClick={handleBecomeAdmin} >

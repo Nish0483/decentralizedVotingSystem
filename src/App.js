@@ -102,7 +102,7 @@ const handleVote = async () => {                 //voting call
 
     try {
       
-      tx = await contract.addCandidate(newCandidateName);
+      const tx = await contract.addCandidate(newCandidateName);
       await tx.wait();
       
       setNewCandidateName('');
@@ -127,7 +127,7 @@ const handleVote = async () => {                 //voting call
     if (!contract) return;
   
     try {
-      tx = await contract.openVoting();
+      const tx = await contract.openVoting();
       await tx.wait();
       fetchData();
       setSuccessMessage('Voting opened successfully');

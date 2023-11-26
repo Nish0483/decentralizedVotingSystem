@@ -34,31 +34,33 @@ npm install
 Update the contract address, ABI, and Ethereum node/API settings in vote.js.
 Replace the Discord bot token and channel ID in vote.js.
 
-## Usage
+# Usage
 
 command 
+
 ~~~
 npm start
 ~~~
+
 to run server in local server
 
 
 ## Notes
 
 
-keep enough gas to operate . keep metamask installed.
+* keep enough gas to operate . keep metamask installed.
 
-This dapp now runs on goreli please check network
+* This dapp now runs on goreli please check network
 
-Some of of the buttons will be intensionally de active
+* Some of of the buttons will be intensionally de active
 
-Add candidate : (admin only use "becomeadmin" test function)
+* Add candidate : (admin only use "becomeadmin" test function)
 
-Open Voting : (need min 2 candidates)
+* Open Voting : (need min 2 candidates)
 
-Vote : select a candidadte from drop down menu . you can only vote once
+* Vote : select a candidadte from drop down menu . you can only vote once
 
-reset : can only use after 24 hour when one votting is over
+* reset : can only use after 24 hour when one votting is over
 
 
 ##Running the Discord Bot as backend server

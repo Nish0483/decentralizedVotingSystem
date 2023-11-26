@@ -23,7 +23,7 @@ Before you begin, make sure you have the following:
 Clone the repository:
 
 ~~~
-git clone https://github.com/your-username/decentralized-voting-system.git
+git clone https://github.com/Nish0483/decentralizedVotingSystem.git
 ~~~
 
 Install dependencies:
@@ -84,7 +84,7 @@ truffle migrate
 This will deploy the smart contracts to the Ethereum blockchain.
 
 ## Discord Commands
-!candidates: Get information about all candidates and their vote counts.
+* !candidates: Send this message or command in channle to get information about all candidates and their vote counts.
 The bot will always send notification when a wallet cast vote 
 
 

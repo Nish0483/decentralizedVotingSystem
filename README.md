@@ -2,6 +2,12 @@
 
 This decentralized voting system is built using Ethereum smart contracts and Discord bot integration.
 
+* Website : https://decentralizedvot.netlify.app/
+
+* contract : https://goerli.etherscan.io/address/0x85f2575cA34C7Bc8955BA05835a866Dc120f8715
+
+* discord channel to check bot : https://discord.com/channels/787978149614583818/787978149614583820
+
 ## Getting Started
 This project consists of two main components:
 

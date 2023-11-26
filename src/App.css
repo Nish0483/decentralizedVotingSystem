@@ -16,8 +16,6 @@
 
 
 
-/* Add more styles as needed */
-
 
 h3{
   margin-top: 30px;
@@ -30,9 +28,9 @@ h1{
   /* top: 0;
   left: 0; */
   width: 100%;
-  background-color: #fff; /* Set background color as needed */
-  padding: 10px; /* Adjust padding as needed */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle box shadow */
+  background-color: #fff; 
+  padding: 10px; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
   z-index: 1000; 
   margin-bottom: 50px;
   align-items: center;
@@ -75,7 +73,7 @@ h1{
   white-space: nowrap;
   will-change: box-shadow,transform;
   font-size: 18px;
-  /* max-width: 80%; */
+  
 }@media (max-width: 480px) {
   #button-metamask {
     padding: 20px;
@@ -125,7 +123,7 @@ h1{
   white-space: nowrap;
   will-change: box-shadow,transform;
   font-size: 18px;
-  /* max-width: 80%; */
+  
 }@media (max-width: 480px) {
   #button-metamask2 {
     padding: 20px;
@@ -154,47 +152,45 @@ h1{
 
 /* Add this CSS for the Disconnect button */
 
-#error{
+#error {
   color: red;
   font-size: 17px;
-  font-family: "JetBrains Mono",monospace;
+  font-family: "JetBrains Mono", monospace;
   font-weight: bold;
   text-align: center;
-  /* margin-top: 10px;
-  margin-bottom: 10px; */
   max-width: 60%;
   margin-left: auto;
   margin-right: auto;
   padding: 10px;
   border-radius: 10px;
-  /* background-color: rgba(255, 0, 0, 0.808); */
   box-shadow: rgba(0, 0, 0, 0.124) 0 19px 38px, rgba(0, 0, 0, 0.072) 0 15px 12px;
-  position: sticky;
-
+  position: fixed;
+  top: 10;
+  left: 50%; 
+  transform: translateX(-50%);
+  z-index: 1000;
 }
 
-#success{
-  position: sticky;
+
+#success {
+  position: fixed;
   color: green;
   font-size: 17px;
-  font-family: "JetBrains Mono",monospace;
+  font-family: "JetBrains Mono", monospace;
   font-weight: bold;
   text-align: center;
-  /* margin-top: 10px;
-  margin-bottom: 10px; */
   max-width: 60%;
   margin-left: auto;
   margin-right: auto;
   padding: 10px;
   border-radius: 10px;
-  /* background-color: rgba(255, 0, 0, 0.808); */
   box-shadow: rgba(0, 0, 0, 0.124) 0 19px 38px, rgba(0, 0, 0, 0.072) 0 15px 12px;
-  
-
+  top: 10; 
+  transform: translateX(-50%);
+  z-index: 1000;
 }
-/* VotingApp.css */
 
-/* Add this style to center the forms */
+
 .forms-container {
   display: flex;
   flex-direction: column;
@@ -207,7 +203,6 @@ h1{
   
 }
 
-/* Add this style to give space between the forms */
 
 
 .but{
